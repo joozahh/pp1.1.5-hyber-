@@ -18,6 +18,7 @@ public class Main {
         us.saveUser("Anime", "Naruto", (byte) 23);
         us.saveUser("Stas", "Mihailov", (byte) 99);
         us.saveUser("Jafar", "Harisa", (byte) 20);
+        us.saveUser("asdads", "asfafdf", (byte) 55);
         List<User> list = us.getAllUsers();
         list.forEach(System.out::println);
         us.cleanUsersTable();

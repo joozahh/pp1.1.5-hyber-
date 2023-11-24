@@ -18,7 +18,6 @@ public class UserDaoJDBCImpl implements UserDao {
         try (Statement statement = connection.createStatement()) {
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS user (id BIGINT PRIMARY KEY AUTO_INCREMENT, name" +
                     " VARCHAR(40), lastName VARCHAR(40), age TINYINT)");
-            connection.commit();
         } catch (SQLException e) {
                 System.out.println("Issues while creating DB");
         }
@@ -27,7 +26,6 @@ public class UserDaoJDBCImpl implements UserDao {
     public void dropUsersTable() {
         try (Statement statement = connection.createStatement()) {
             statement.executeUpdate("DROP TABLE IF EXISTS user");
-            connection.commit();
         } catch (SQLException e) {
             System.out.println("Issues while Drop DB");
         }
@@ -39,7 +37,7 @@ public class UserDaoJDBCImpl implements UserDao {
             statement.setString(2, lastName);
             statement.setInt(3, age);
             statement.executeUpdate();
-            statement.getConnection().commit();
+            System.out.println("User с именем - " + name + " добавлен в базу данных");
         } catch (SQLException e) {
             System.out.println("Issues while add saveUser");
         }
@@ -71,7 +69,6 @@ public class UserDaoJDBCImpl implements UserDao {
     public void cleanUsersTable() {
         try (Statement statement = connection.createStatement()){
             statement.executeUpdate("TRUNCATE user");
-            connection.commit();
         } catch (SQLException e) {
             System.out.println("Issues while cleaning table");
         }
