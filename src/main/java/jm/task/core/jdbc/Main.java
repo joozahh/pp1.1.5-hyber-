@@ -14,17 +14,13 @@ public class Main {
     public static void main(String[] args) {
         Connection connection = Util.getConnection();
         UserService us = new UserServiceImpl();
-        try (Statement statement = connection.createStatement()){
-            us.createUsersTable();
-            us.saveUser("Anime", "Naruto", (byte) 23);
-            us.saveUser("Stas", "Mihailov", (byte) 99);
-            us.saveUser("Jafar", "Harisa", (byte) 20);
-            List<User> list = us.getAllUsers();
-            list.forEach(System.out::println);
-            us.cleanUsersTable();
-            us.dropUsersTable();
-        } catch (SQLException e) {
-            System.out.println("Unexpected SQLEexception");
-        }
+        us.createUsersTable();
+        us.saveUser("Anime", "Naruto", (byte) 23);
+        us.saveUser("Stas", "Mihailov", (byte) 99);
+        us.saveUser("Jafar", "Harisa", (byte) 20);
+        List<User> list = us.getAllUsers();
+        list.forEach(System.out::println);
+        us.cleanUsersTable();
+        us.dropUsersTable();
     }
 }
