@@ -17,7 +17,8 @@ public class Util {
     private static final String PASSWORD = "root";
 
     private static StandardServiceRegistry standardServiceRegistry;
-    private static SessionFactory sessionFactory;
+    private static volatile SessionFactory sessionFactory;
+    private static volatile Connection connection;
 
     public static Connection getConnection() {
         Connection connection = null;
