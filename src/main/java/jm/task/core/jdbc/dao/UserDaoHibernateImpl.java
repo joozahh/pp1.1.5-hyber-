@@ -69,7 +69,6 @@ public class UserDaoHibernateImpl implements UserDao {
         try (Session session = Util.getSessionFactory().getCurrentSession()) {
             session.beginTransaction();
             List<User> list = session.createNativeQuery("SELECT * FROM user", User.class).getResultList();
-            session.getTransaction().commit();
             return list;
         }
     }
